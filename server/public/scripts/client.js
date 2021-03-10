@@ -37,8 +37,18 @@ function sendMessage(){
     }//end objectToSend
     console.log( 'sending message:', objectToSend);
     //send the object to the server via AJAX POST
-    //if successful, update DOM
-    //catch any errors
-    // empty the messageIn element
+    $.ajax({
+        type: 'POST',
+        url: '/messages',
+        data: objectToSend
+    }).then( function( response ){
+        //if successful, update DOM
+        console.log( 'back from POST:', response );
+    }).catch( function( err ){
+        //catch any erros
+        alert( 'error' );
+        console.log( err );
+    })
+
     $( '#messageIn' ).val( '' );
 }//end sendMessage
