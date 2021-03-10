@@ -9,6 +9,7 @@ const app = express();
 app.use( express.static( 'server/public' ) )
 //global
 const port = 5000;
+let messages = [];
 
 //spin up server
 app.listen( port, ()=>{
@@ -16,3 +17,7 @@ app.listen( port, ()=>{
 })
 
 // routes
+app.get( '/messages', ( req, res )=>{
+    console.log('/messages get');
+    res.send( messages );
+})//end messages get
